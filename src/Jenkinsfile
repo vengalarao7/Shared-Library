@@ -1,0 +1,14 @@
+@Library ('Shared-Library')_
+pipeline{
+  any agent
+  
+  stages{
+    
+    stage('Demo Build'){
+      steps{
+        build()
+      } 
+    }
+    
+  }
+}
