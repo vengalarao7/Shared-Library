@@ -1,14 +1,15 @@
-@Library ('Shared-Library@main')_
-pipeline{
-  agent any
-  
-  stages{
+@Library('Shared-Library@main')_
+
+pipeline {
+    agent any
     
-    stage('Demo Build'){
-      steps{
-        build()
-      } 
+    stages {
+        stage('Demo Build') {
+            steps {
+                script {
+                    build()
+                }
+            }
+        }
     }
-    
-  }
 }
