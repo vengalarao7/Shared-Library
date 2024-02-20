@@ -1,6 +1,6 @@
 @Library ('Shared-Library@main')_
 pipeline{
-  any agent
+  agent any
   
   stages{
     
