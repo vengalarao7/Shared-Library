@@ -5,10 +5,7 @@
   become_user: admin
   tasks:
     - name: Install Apache2
-      apt:
+      package:
         name: apache2
         state: present
-      become: yes
-      become_user: admin
-      vars:
-        ansible_become_password: "12345"
+
