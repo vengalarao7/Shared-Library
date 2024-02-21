@@ -1,9 +1,10 @@
+---
 - name: Install Apache2 package
   hosts: localhost
   become: true
   become_method: sudo
-  environment:
-    PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+  become_user: sa_100413743994942293930
+  become_flags: '-H -S -n'
   tasks:
     - name: Install Apache2
       apt:
