@@ -1,8 +1,11 @@
 ---
 - name: Install Apache HTTP Server
   hosts: all
-  become: true
+  become: yes
   gather_facts: false
+  become_method: sudo
+  environment:
+    PATH: "{{ ansible_env.PATH }}:/usr/sbin:/sbin"
   tasks:
     - name: Install Apache2 package
       apt:
