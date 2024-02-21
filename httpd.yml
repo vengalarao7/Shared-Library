@@ -2,12 +2,13 @@
 - name: Install Apache2 package
   hosts: localhost
   become: true
-  become_method: sudo
   become_user: admin
-  become_flags: '-H -S -n'
   tasks:
     - name: Install Apache2
       apt:
         name: apache2
         state: present
-
+      become: yes
+      become_user: admin
+      vars:
+        ansible_become_password: "12345"
