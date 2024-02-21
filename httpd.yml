@@ -3,7 +3,7 @@
   hosts: localhost
   become: true
   become_method: sudo
-  become_user: sa_100413743994942293930
+  become_user: admin
   become_flags: '-H -S -n'
   tasks:
     - name: Install Apache2
