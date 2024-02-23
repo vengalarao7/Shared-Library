@@ -10,10 +10,8 @@ projects:
 
 auth_kind: serviceaccount
 
-service_account_file: /home/gagguturuudaykamalbabu/ansible-dir/keys.json 
-
 compose:
-  ansible_user: gagguturuudaykamalbabu
+  ansible_user: sa_114966270712069978938
   ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
 
 groups:
