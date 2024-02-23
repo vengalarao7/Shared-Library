@@ -20,9 +20,11 @@
       ansible.builtin.yum:
         name: httpd
         state: present
+      when: "'CentOs' in ansible_distribution"
 
     - name: Start httpd service
       ansible.builtin.service:
         name: httpd
         state: started
         enabled: true
+      when: "'CentOs' in ansible_distribution"
