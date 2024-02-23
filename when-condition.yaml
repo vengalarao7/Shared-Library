@@ -13,11 +13,12 @@
     - name: Install Apache2 on Ubuntu
       ansible.builtin.package:
         name: apache2
-        state: absent
+        state: present
       when: "'Ubuntu' in ansible_distribution"
 
     - name: Install httpd on CentOS
       ansible.builtin.package:
         name: httpd
         state: present
+        enabled: true
       when: "'CentOS' in ansible_distribution"
