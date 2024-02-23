@@ -20,9 +20,8 @@
       ansible.builtin.yum:
         name: httpd
         state: present
-        use_backend: dnf  # Explicitly specify the backend for CentOS 8 and later
 
-    - name: Start and enable httpd service
+    - name: Start httpd service
       ansible.builtin.service:
         name: httpd
         state: started
