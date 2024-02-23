@@ -17,4 +17,4 @@ compose:
   ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
 
 groups:
-  remote: "'env' in (labels|list)"
+  remote: "'dev' in (labels|list)"
