@@ -1,0 +1,23 @@
+---
+- name: Install Apache Web Server
+  hosts: all
+  become: true  # Run tasks with sudo
+
+  tasks:
+    - name: Check OS Distribution
+      ansible.builtin.setup:
+        gather_subset:
+          - '!all'
+          - '!min'
+
+    - name: Install Apache2 on Ubuntu
+      ansible.builtin.package:
+        name: apache2
+        state: present
+      when: "'Ubuntu' in ansible_distribution"
+
+    - name: Install httpd on CentOS
+      ansible.builtin.package:
+        name: httpd
+        state: present
+      when: "'CentOS' in ansible_distribution"
