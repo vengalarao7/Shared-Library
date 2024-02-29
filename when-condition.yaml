@@ -19,6 +19,8 @@
   hosts: all
   become: true
   gather_facts: false 
+  vars:
+    gcp_project: "sinuous-tuner-414107"
   tasks:
     - name: Stop GCP VM
       gcp_compute_instance:
