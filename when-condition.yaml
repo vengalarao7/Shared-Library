@@ -1,18 +1,30 @@
----
-- name: Install, Start, and Enable Apache (httpd) on RHEL using Yum
-  hosts: all  # Specify the target host or group
-  become: true  # Run tasks with elevated privileges (sudo)
+# ---
+# - name: Install, Start, and Enable Apache (httpd) on RHEL using Yum
+#   hosts: all  # Specify the target host or group
+#   become: true  # Run tasks with elevated privileges (sudo)
 
+#   tasks:
+#     - name: Install httpd (Apache) using yum
+#       yum:
+#         name: httpd
+#         state: present
+
+#     - name: Start httpd service
+#       service:
+#         name: httpd
+#         state: started
+#         enabled: yes
+---        
+- name: stopping the vm 
+  hosts: all
+  become: true
+  gather_facts: false 
   tasks:
-    - name: Install httpd (Apache) using yum
-      yum:
-        name: httpd
-        state: present
-
-    - name: Start httpd service
-      service:
-        name: httpd
-        state: started
-        enabled: yes
-        
-
+    - name: Stop GCP VM
+      gcp_compute_instance:
+        project: "{{ gcp_project }}"
+        auth_kind: "{{ gcp_auth_kind }}"
+        service_account_file: "{{ gcp_credentials_file }}"
+        zone: "{{ gcp_zone }}"
+        instance_names: "{{ gcp_instance_name }}"
+        state: "absent"
