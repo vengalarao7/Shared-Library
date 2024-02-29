@@ -22,7 +22,7 @@
   vars:
     gcp_project: "sinuous-tuner-414107"
     gcp_auth_kind: "serviceaccount"  # Replace with your GCP authentication method
-    gcp_credentials_file: "./keys.json"  # Replace with the path to your GCP service account key file
+    # gcp_credentials_file: "./keys.json"  # Replace with the path to your GCP service account key file
     gcp_zone: "us-west1-b"  # Replace with your GCP zone
     # gcp_instance_name: "your_gcp_instance_name"  # Replace with your GCP instance name
   tasks:
@@ -33,7 +33,7 @@
       gcp_compute_instance:
         project: "{{ gcp_project }}"
         auth_kind: "{{ gcp_auth_kind }}"
-        service_account_file: "{{ gcp_credentials_file }}"
+        # service_account_file: "{{ gcp_credentials_file }}"
         zone: "{{ gcp_zone }}"
         # instance_names: "{{ gcp_instance_name }}"
         state: "absent"
