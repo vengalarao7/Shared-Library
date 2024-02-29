@@ -18,11 +18,12 @@
 - name: Stop GCP VM
   hosts: all  # Specify the target host or group
   become: true  # Run tasks with elevated privileges (sudo)
-  gcp_compute_instance:
-    name: "34.168.204.111"
-    state: "absent"
-    project: "sinuous-tuner-414107"
-    zone: "us-west1-b"
-    auth_kind: "serviceaccount"
-    service_account_file: "/home/sa_114966270712069978938/keys.json"
-    wait_for_instances: true  # Optional, waits for the instances to stop
+  tasks:
+    - name: Stop GCP VM
+      gcp_compute_instance:
+        name: "34.168.204.111"
+        state: "absent"
+        project: "sinuous-tuner-414107"
+        zone: "us-west1-b"
+        auth_kind: "serviceaccount"
+        service_account_file: "/home/sa_114966270712069978938/keys.json"
