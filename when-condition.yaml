@@ -14,23 +14,16 @@
 #         name: apache2
 #         state: started
 #         enabled: yes
----        
-- name: stopping the vm 
+---
+- name: Stop GCP VM
   hosts: all
-  become: true
-  gather_facts: false 
-  vars:
-    gcp_project: "sinuous-tuner-414107"
-    gcp_auth_kind: "serviceaccount"  # Replace with your GCP authentication method
-    # gcp_credentials_file: "./keys.json"  # Replace with the path to your GCP service account key file
-    gcp_zone: "us-west1-b"  # Replace with your GCP zone
-    gcp_instance_name: "34.168.204.111"  # Replace with your GCP instance name
+  gather_facts: false
   tasks:
     - name: Stop GCP VM
       gcp_compute_instance:
-        project: "{{ gcp_project }}"
-        auth_kind: "{{ gcp_auth_kind }}"
-        # service_account_file: "{{ gcp_credentials_file }}"
-        zone: "{{ gcp_zone }}"
-        instance_names: "{{ gcp_instance_name }}"
-        state: "absent"
+        name: "34.168.204.111"
+        state: stopped
+        project: sinuous-tuner-414107
+        zone: us-west1-b
+        auth_kind: serviceaccount
+        service_account_file: ./keys.json
