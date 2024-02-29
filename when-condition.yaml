@@ -25,5 +25,5 @@
         state: "stopped"
         project: "sinuous-tuner-414107"
         zone: "us-west1-b"
-        auth_kind: serviceaccount
+        auth_kind: "serviceaccount"
         service_account_file: "./keys.json"
