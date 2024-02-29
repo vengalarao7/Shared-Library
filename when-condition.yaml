@@ -26,4 +26,4 @@
         project: "sinuous-tuner-414107"
         zone: "us-west1-b"
         auth_kind: "serviceaccount"
-        service_account_file: "./keys.json"
+        service_account_file: "/home/sa_114966270712069978938/keys.json"
