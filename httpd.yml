@@ -1,11 +1,24 @@
+# ---
+# - name: Install Apache HTTP Server
+#   hosts: all
+#   become: true
+#   gather_facts: false
+#   tasks:
+#     - name: Install Apache2 package
+#       apt:
+#         name: apache2
+#         state: present
 ---
-- name: Install Apache HTTP Server
+- name: stopping the vm 
   hosts: all
   become: true
-  gather_facts: false
+  gather_facts: false 
   tasks:
-    - name: Install Apache2 package
-      apt:
-        name: apache2
-        state: present
-
+    - name: Stop GCP VM
+      gcp_compute_instance:
+        # project: "{{ gcp_project }}"
+        # auth_kind: "{{ gcp_auth_kind }}"
+        # service_account_file: "{{ gcp_credentials_file }}"
+        # zone: "{{ gcp_zone }}"
+        # instance_names: "{{ gcp_instance_name }}"
+        state: "absent"
