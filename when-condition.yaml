@@ -19,6 +19,9 @@
   hosts: all
   gather_facts: false
   tasks:
+    - name: Debug current user
+      debug:
+        var: ansible_user
     - name: Stop GCP VM
       gcp_compute_instance:
         name: "34.168.204.111"
