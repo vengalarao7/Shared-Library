@@ -26,6 +26,9 @@
     gcp_zone: "us-west1-b"  # Replace with your GCP zone
     # gcp_instance_name: "your_gcp_instance_name"  # Replace with your GCP instance name
   tasks:
+   - name: Install google-auth library
+      pip:
+        name: google-auth
     - name: Stop GCP VM
       gcp_compute_instance:
         project: "{{ gcp_project }}"
