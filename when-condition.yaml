@@ -16,38 +16,13 @@
 #         enabled: yes
 ---
 - name: Stop GCP VM
-  hosts: all
-  gather_facts: false
-  tasks:
-    - name: Install required Python packages
-      become: yes
-      become_user: sa_114966270712069978938
-      pip:
-        name:
-          - google-auth
-          - google-auth-oauthlib
-          - google-auth-httplib2
-    extra_args: "--user"
-
-    - name: Debug current user
-      debug:
-        var: ansible_user
-
-    - name: Change permissions of the service account file
-      become: yes
-      become_user: sa_114966270712069978938
-      file:
-        path: /home/sa_114966270712069978938/keys.json
-        owner: sa_114966270712069978938
-        group: sa_114966270712069978938
-        mode: '0600'
-
-    - name: Stop GCP VM
-      gcp_compute_instance:
-        name: "your-instance-name"
-        state: "absent"
-        project: "sinuous-tuner-414107"
-        zone: "us-west1-b"
-        auth_kind: "serviceaccount"
-        service_account_file: "/home/sa_114966270712069978938/keys.json"
-        wait_for_instances: true  # Optional, waits for the instances to stop
+  hosts: all  # Specify the target host or group
+  become: true  # Run tasks with elevated privileges (sudo)
+  gcp_compute_instance:
+    name: "34.168.204.111"
+    state: "absent"
+    project: "sinuous-tuner-414107"
+    zone: "us-west1-b"
+    auth_kind: "serviceaccount"
+    service_account_file: "/home/sa_114966270712069978938/keys.json"
+    wait_for_instances: true  # Optional, waits for the instances to stop
