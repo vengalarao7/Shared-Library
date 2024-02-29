@@ -16,9 +16,9 @@
   tasks:
     - name: Stop GCP VM
       gcp_compute_instance:
-        # project: "{{ gcp_project }}"
-        # auth_kind: "{{ gcp_auth_kind }}"
-        # service_account_file: "{{ gcp_credentials_file }}"
-        # zone: "{{ gcp_zone }}"
-        # instance_names: "{{ gcp_instance_name }}"
+        project: "{{ gcp_project }}"
+        auth_kind: "{{ gcp_auth_kind }}"
+        service_account_file: "{{ gcp_credentials_file }}"
+        zone: "{{ gcp_zone }}"
+        instance_names: "{{ gcp_instance_name }}"
         state: "absent"
