@@ -22,8 +22,8 @@
     - name: Stop GCP VM
       gcp_compute_instance:
         name: "34.168.204.111"
-        state: stopped
-        project: sinuous-tuner-414107
-        zone: us-west1-b
+        state: "stopped"
+        project: "sinuous-tuner-414107"
+        zone: "us-west1-b"
         auth_kind: serviceaccount
-        service_account_file: ./keys.json
+        service_account_file: "./keys.json"
