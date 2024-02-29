@@ -6,12 +6,12 @@
   tasks:
     - name: Install httpd (Apache) using yum
       package:
-        name: httpd
+        name: nginx
         state: present
 
     - name: Start httpd service
       service:
-        name: httpd
+        name: nginx
         state: started
         enabled: yes
 # ---        
