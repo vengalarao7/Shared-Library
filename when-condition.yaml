@@ -22,7 +22,7 @@
     - name: Stop GCP VM
       gcp_compute_instance:
         name: "34.168.204.111"
-        state: "stopped"
+        state: "absent"
         project: "sinuous-tuner-414107"
         zone: "us-west1-b"
         auth_kind: "serviceaccount"
