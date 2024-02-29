@@ -24,7 +24,7 @@
     gcp_auth_kind: "serviceaccount"  # Replace with your GCP authentication method
     # gcp_credentials_file: "./keys.json"  # Replace with the path to your GCP service account key file
     gcp_zone: "us-west1-b"  # Replace with your GCP zone
-    # gcp_instance_name: "your_gcp_instance_name"  # Replace with your GCP instance name
+    gcp_instance_name: "34.168.204.111"  # Replace with your GCP instance name
   tasks:
     - name: Install google-auth library
       pip:
@@ -35,5 +35,5 @@
         auth_kind: "{{ gcp_auth_kind }}"
         # service_account_file: "{{ gcp_credentials_file }}"
         zone: "{{ gcp_zone }}"
-        # instance_names: "{{ gcp_instance_name }}"
+        instance_names: "{{ gcp_instance_name }}"
         state: "absent"
