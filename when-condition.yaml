@@ -1,30 +1,18 @@
 ---
-- name: Install Apache Web Server
-  hosts: all
-  become: true  # Run tasks with sudo
+- name: Install, Start, and Enable Apache (httpd) on RHEL using Yum
+  hosts: all  # Specify the target host or group
+  become: true  # Run tasks with elevated privileges (sudo)
 
   tasks:
-    - name: Check OS Distribution
-      ansible.builtin.setup:
-        gather_subset:
-          - '!all'
-          - '!min'
-
-    - name: Install Apache2 on Ubuntu
-      ansible.builtin.package:
-        name: apache2
-        state: present
-      when: "'Ubuntu' in ansible_distribution"
-
-    - name: Install httpd on CentOS
-      ansible.builtin.yum:
+    - name: Install httpd (Apache) using yum
+      yum:
         name: httpd
         state: present
-      when: "'CentOS' in ansible_distribution"
 
     - name: Start httpd service
-      ansible.builtin.service:
+      service:
         name: httpd
         state: started
-        enabled: true
-      when: "'CentOS' in ansible_distribution"
+        enabled: yes
+        
+
