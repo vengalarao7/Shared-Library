@@ -1,27 +1,10 @@
-# ---
-# - name: Install, Start, and Enable Apache (httpd) on RHEL using Yum
-#   hosts: all  # Specify the target host or group
-#   become: true  # Run tasks with elevated privileges (sudo)
-
-#   tasks:
-#     - name: Install httpd (Apache) using yum
-#       package:
-#         name: apache2
-#         state: present
-
-#     - name: Start httpd service
-#       service:
-#         name: apache2
-#         state: started
-#         enabled: yes
 ---
 - name: Stop GCP VM
-  hosts: all  # Specify the target host or group
-  become: true  # Run tasks with elevated privileges (sudo)
+  hosts: all  
+  become: true  
   tasks:
     - name: Stop GCP VM
       gcp_compute_instance:
-        name: "34.168.204.111"
         state: "absent"
         project: "sinuous-tuner-414107"
         zone: "us-west1-b"
