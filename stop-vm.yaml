@@ -1,66 +1,12 @@
-# ---
-# - name: Stop GCP VM
-#   hosts: all  
-#   become: true  
-#   tasks:
-#     - name: Install required Python packages
-#       become: true
-#       become_user: sa_114966270712069978938
-#       pip:
-#         name: "{{ item }}"
-#       with_items:
-#         - google-auth
-#         - google-auth-oauthlib
-#         - google-auth-httplib2
-#     - name: Stop GCP VM
-#       gcp_compute_instance:
-#         state: "absent"
-#         project: "sinuous-tuner-414107"
-#         zone: "us-west1-b"
-#         auth_kind: "serviceaccount"
-#         service_account_file: "/home/sa_114966270712069978938/keys.json"
-
-
 ---
 - name: Stop GCP VM
-  hosts: all
-  gather_facts: false
-  vars:
-    ansible_python_interpreter: "/usr/bin/python3"  # Adjust the path as needed
+  hosts: all  
+  become: true  
   tasks:
-    - name: Debug current user
-      debug:
-        var: ansible_user
-
-    - name: Install required Python packages
-      become: true
-      ansible.builtin.package:
-        name: "{{ item }}"
-        state: present
-      loop:
-        - google-auth
-        - google-auth-oauthlib
-        - google-auth-httplib2
-
-    - name: Change permissions of the service account file
-      become: true
-      file:
-        path: /home/sa_114966270712069978938/keys.json
-        owner: sa_114966270712069978938
-        group: sa_114966270712069978938
-        mode: '0600'
-
     - name: Stop GCP VM
       gcp_compute_instance:
-        name: "35.232.76.241"
         state: "absent"
         project: "sinuous-tuner-414107"
         zone: "us-west1-b"
         auth_kind: "serviceaccount"
         service_account_file: "/home/sa_114966270712069978938/keys.json"
-      register: gcp_vm_result
-
-    - name: Debug GCP VM result
-      debug:
-        var: gcp_vm_result
-
